@@ -1,0 +1,41 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAutoRent.Views"
+        xmlns:LogicAndDb="clr-namespace:LogicAndDb;assembly=LogicAndDb" x:Class="TeamProjectAutoRent.Views.EmployeeWindow"
+        mc:Ignorable="d"
+        Title="EmployeeWindow" Height="263.939" Width="271.151" Loaded="Window_Loaded"  ResizeMode="NoResize">
+    <Window.Resources>
+        <CollectionViewSource x:Key="employeeViewSource" d:DesignSource="{d:DesignInstance {x:Type LogicAndDb:Employee}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource employeeViewSource}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="birth date:"/>
+            <DatePicker x:Name="birth_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding birth_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="full name:"/>
+            <TextBox x:Name="full_nameTextBox" Width="126" VerticalAlignment="Center" Text="{Binding full_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="gender:"/>
+            <ComboBox x:Name="genderComboBox" Width="126" VerticalAlignment="Center"  Grid.Row="2" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="office address:"/>
+            <ComboBox x:Name="office_addressComboBox" Width="126" VerticalAlignment="Center" Grid.Row="3" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="passport number:"/>
+            <TextBox x:Name="passport_numberTextBox" Width="126" VerticalAlignment="Center" Text="{Binding passport_number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+        </Grid>
+        <Button Content="OK" Click="Button_Click" HorizontalAlignment="Left" Margin="10,175,0,0" VerticalAlignment="Top" Width="241" Height="48"/>
+
+    </Grid>
+</Window>

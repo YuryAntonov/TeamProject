@@ -1,0 +1,32 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAutoRent"
+        xmlns:LogicAndDb="clr-namespace:LogicAndDb;assembly=LogicAndDb" x:Class="TeamProjectAutoRent.BrandWindow"
+        mc:Ignorable="d"
+        Title="Brand window" Height="162.373" Width="256.767" Loaded="Window_Loaded"  ResizeMode="NoResize">
+    <Window.Resources>
+        <CollectionViewSource x:Key="brandViewSource" d:DesignSource="{d:DesignInstance {x:Type LogicAndDb:Brand}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource brandViewSource}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="brand name:"/>
+            <TextBox x:Name="brand_nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding brand_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="price category:"/>
+            <ComboBox x:Name="price_categoryComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="32" Grid.Row="1" VerticalAlignment="Top" Width="126"/>
+        </Grid>
+        <Button x:Name="OKButton" Content="OK" HorizontalAlignment="Left" Margin="16,79,0,0" VerticalAlignment="Top" Width="214" Height="42" Click="OKButton_Click"/>
+
+    </Grid>
+</Window>

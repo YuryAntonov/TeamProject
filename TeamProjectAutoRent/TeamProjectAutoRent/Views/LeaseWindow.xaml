@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAutoRent.Views"
+        xmlns:LogicAndDb="clr-namespace:LogicAndDb;assembly=LogicAndDb" x:Class="TeamProjectAutoRent.Views.LeaseWindow"
+        mc:Ignorable="d"
+        Title="LeaseWindow" Height="345.507" Width="278.215" Loaded="Window_Loaded"  ResizeMode="NoResize">
+    <Window.Resources>
+        <CollectionViewSource x:Key="lease_contractViewSource" d:DesignSource="{d:DesignInstance {x:Type LogicAndDb:Lease_contract}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="10,10,0,0" HorizontalAlignment="Left" DataContext="{StaticResource lease_contractViewSource}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="carplate number:"/>
+            <ComboBox x:Name="carplate_numberComboBox" Width="120" VerticalAlignment="Center" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="daily cost:"/>
+            <TextBox x:Name="daily_costTextBox" Width="120" VerticalAlignment="Center" Text="{Binding daily_cost, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="end date:"/>
+            <DatePicker x:Name="end_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding end_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Width="120"/>
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="issue date:"/>
+            <DatePicker x:Name="issue_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding issue_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Width="120"/>
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="native office address:"/>
+            <ComboBox x:Name="native_office_addressComboBox" Width="120" VerticalAlignment="Center"  Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="passport number:"/>
+            <ComboBox x:Name="passport_numberComboBox" Width="120" VerticalAlignment="Center" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="return office address:"/>
+            <ComboBox x:Name="return_office_addressComboBox" Width="120" VerticalAlignment="Center"  Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="start date:"/>
+            <DatePicker x:Name="start_dateDatePicker" VerticalAlignment="Center" SelectedDate="{Binding start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Width="120"/>
+        </Grid>
+        <Button Click="Button_Click" Content="Add lease info" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Width="250" Height="38"/>
+
+    </Grid>
+</Window>
